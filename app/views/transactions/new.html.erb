@@ -1,0 +1,31 @@
+<div class="header">
+  <a href="#default" class="logo">My Finance</a>
+  <div class="header-right">
+    <%= link_to 'Home', controller: 'transactions' %>
+    <%= link_to 'New Entry', new_transaction_path %>
+    <%= link_to 'All' %>
+  </div>
+</div>
+
+<div id="form">
+  <%= form_with scope: :transaction, url: transactions_path, local: true do |form| %>
+      <p>
+        <%= form.label :Select_type %><br>
+        <%= form.select :category, [['Food','food'],['Gas','gas'],['Entertainment','entertainment'], ['Groceries','groceries'], ['Bills','bills']] %>
+      </p>
+
+      <p>
+        <%= form.label :business %><br>
+        <%= form.text_field :business %>
+      </p>
+    
+      <p>
+        <%= form.label :amount %><br>
+        <%= form.text_field :amount %>
+      </p>
+    
+      <p>
+        <%= form.submit "Submit!"%>
+      </p>
+  <% end %>
+</div>
