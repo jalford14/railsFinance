@@ -1,10 +1,25 @@
-<div class="header">
-  <a href="#default" class="logo">My Finance</a>
-  <div class="header-right">
-    <%= link_to 'Home' %>
-    <%= link_to 'New Entry', new_transaction_path %>
-    <%= link_to 'All' %>
-  </div>
-</div>
+<%= render 'header' %>
 
 <div id="activity">Activity</div>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Business</th>
+    <th>Amount</th>
+    <th></th>
+  </tr>
+ 
+  <% @transaction.each do |transaction| %>
+    <tr>
+      <td><%= transaction.category.titleize  %></td>
+      <td><%= transaction.business.titleize %></td>
+      <td>$<%= transaction.amount %></td>
+      <td><%= link_to 'Show', transaction_path(transaction) %></td>
+      <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+      <td><%= link_to 'Destroy', transaction_path(transaction),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

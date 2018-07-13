@@ -1,14 +1,17 @@
 <p>
   <strong>Type:</strong>
-  <%= @transaction.category %>
+  <%= @transaction.category.titleize %>
 </p>
 
 <p>
   <strong>Business:</strong>
-  <%= @transaction.business %>
+  <%= @transaction.business.titleize %>
 </p>
 
 <p>
   <strong>Amount:</strong>
-  <%= @transaction.amount %>
+  $<%= @transaction.amount %>
 </p>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>
