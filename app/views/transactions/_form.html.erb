@@ -1,4 +1,5 @@
-<div id = "form">
+<div id="form">
+
   <%= form_with(model: @transaction, local: true) do |form| %>
   
     <% if @transaction.errors.any? %>
@@ -17,7 +18,7 @@
   
       <p>
           <%= form.label :Select_type %><br>
-          <%= form.select :category, [['Food','food'],['Gas','gas'],['Entertainment','entertainment'], ['Groceries','groceries'], ['Bills','bills']] %>
+          <%= form.text_field :category %>
       </p>
 
       <p>
@@ -35,4 +36,5 @@
       </p>
   
   <% end %>
+
 </div>
