@@ -1,6 +1,6 @@
 <%= render 'header' %>
 
-<div id="activity">Activity</div>
+<div id="title">Activity</div>
 
 <% @transaction.each do |transaction| %>
   <%= link_to '', transaction_path(transaction) %>
@@ -14,4 +14,3 @@
             data: { confirm: 'Are you sure?' } %></div>
     </div>
 <% end %>
-
