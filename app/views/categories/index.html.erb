@@ -2,12 +2,13 @@
 
 <div id="title">Categories</div>
 
-<% @transaction.each do |transaction| %>
-    <%= link_to '', transaction_path(transaction) %>
+<%= link_to 'Create New Category', new_category_path, :id=>"newCat"%>
+
+<% @category.each do |category| %>
       <div id="category">
-        <div class="type">Type: <%= transaction.category.titleize  %></div>
-        <div id="edit"><%= link_to image_tag("edit_icon.png"), edit_transaction_path(transaction) %></div>
-        <div id="delete"><%= link_to image_tag("trash.png"), transaction_path(transaction),
+        <div class="type">Type: <%= category.category.titleize  %></div>
+        <div id="edit"><%= link_to image_tag("edit_icon.png"), edit_category_path(category) %></div>
+        <div id="delete"><%= link_to image_tag("trash.png"), category_path(category),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></div>
       </div>
