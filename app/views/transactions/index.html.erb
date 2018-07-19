@@ -3,7 +3,6 @@
 <div id="title">Activity</div>
 
 <% @transaction.each do |transaction| %>
-  <%= link_to '', transaction_path(transaction) %>
     <div class="info <%= transaction.category %>">
       <div class="type">Type: <%= transaction.category.titleize  %></div>
       <div class="type">Business: <%= transaction.business.titleize %></div>
