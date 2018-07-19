@@ -4,11 +4,15 @@
 
 <% @transaction.each do |transaction| %>
     <div class="info <%= transaction.category %>">
-      <div class="type">Type: <%= transaction.category.titleize  %></div>
-      <div class="type">Business: <%= transaction.business.titleize %></div>
-      <div class="type">Amount: $<%= transaction.amount %></div>
-      <div id="edit"><%= link_to image_tag("edit_icon.png"), edit_transaction_path(transaction) %></div>
-      <div id="delete"><%= link_to image_tag("trash.png"), transaction_path(transaction),
+        <div class="type">Type: <%= transaction.category.titleize  %></div>
+        <% unless transaction.business.blank? %>
+            <div class="type">Business: <%= transaction.business.titleize %></div>
+        <% end %>
+        <% unless transaction.business.blank? %>
+            <div class="type">Amount: $<%= transaction.amount %></div>
+        <% end %>
+        <div id="edit"><%= link_to image_tag("edit_icon.png"), edit_transaction_path(transaction) %></div>
+        <div id="delete"><%= link_to image_tag("trash.png"), transaction_path(transaction),
             method: :delete,
             data: { confirm: 'Are you sure?' } %></div>
     </div>

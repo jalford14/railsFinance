@@ -5,7 +5,9 @@
 
 <p>
   <strong>Business:</strong>
-  <%= @transaction.business.titleize %>
+  <% unless @transaction.business.blank? %>
+    <%= @transaction.business.titleize %>
+  <% end %>
 </p>
 
 <p>

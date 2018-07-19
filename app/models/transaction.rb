@@ -1,12 +1,13 @@
 class Transaction < ApplicationRecord
-    validates :category, presence: true
-    validates :business, presence: true
-    validates :amount, presence: true,
-            numericality: { greater_than: 0 }
+    validates :category, uniqueness: { case_sensitive: false }, presence: true
+    validates :business, presence: false
+    validates :amount, presence: false
     before_save :downcase_fields
 
    def downcase_fields
       self.category.downcase!
-      self.business.downcase!
+      if self.business then
+        self.business.downcase!
+      end
    end
 end
