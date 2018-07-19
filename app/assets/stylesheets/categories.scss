@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#category {
+#category, #newCat {
     display: flex;
     margin: auto;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     width: 50%;
-    border: solid black;
+    border-bottom: solid black 1px;
     height: 100px;
     align-items: center;
     justify-content: center;
@@ -31,4 +31,17 @@
 #category img {
     width: 25px;
     height: 25px;
+}
+
+#newCat {
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
+    background-color: #ddd;
+}
+
+#newCat:hover {
+    background-color: darkgray;
+    color: black;
 }
