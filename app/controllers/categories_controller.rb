@@ -1,18 +1,18 @@
 class CategoriesController < ApplicationController
     def index
-        @category = Transaction.all
+        @category = Category.all
     end
 
     def show
-        @category = Transaction.all
+        @category = Category.find(params[:id])
     end
 
     def new
-        @category = Transaction.new
+        @category = Category.new
     end
 
     def create
-        @category = Transaction.new(transaction_params)
+        @category = Category.new(category_params)
         
         if @category.save
             redirect_to @category
@@ -22,9 +22,15 @@ class CategoriesController < ApplicationController
     end
 
     def destroy
-        @category = Transaction.find(params[:id])
+        @category = Category.find(params[:id])
         @category.destroy
         
         redirect_to categories_path
     end
+
+    private
+        def category_params
+            params.require(:category).permit(:category)
+        end
+
 end
