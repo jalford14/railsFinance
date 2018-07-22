@@ -16,10 +16,12 @@
       </div>
     <% end %>
   
+    <%= form.fields_for :category do |category| %>
       <p>
-          <%= form.label :Create_new_category %><br>
-          <%= form.text_field :category %>
+          <%= category.label :Create_new_category %><br>
+          <%= category.text_field :category %>
       </p>
+    <% end %>
 
       <p>
           <%= form.label :business %><br>
