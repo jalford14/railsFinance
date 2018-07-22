@@ -3,8 +3,8 @@
 <div id="title">Activity</div>
 
 <% @transaction.each do |transaction| %>
-    <div class="info <%= transaction.category %>">
-        <div class="type">Type: <%= transaction.category.titleize  %></div>
+    <div class="info ">
+        <div class="type">Type: <%= category.category.titleize  %></div>
         <% unless transaction.business.blank? %>
             <div class="type">Business: <%= transaction.business.titleize %></div>
         <% end %>
