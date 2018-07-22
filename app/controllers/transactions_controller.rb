@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
 
     def index
         @transaction = Transaction.all
+        @category = Category.all
     end
 
     def show
@@ -10,6 +11,7 @@ class TransactionsController < ApplicationController
 
     def new
         @transaction = Transaction.new
+        @category = Category.new
     end
 
     def edit
@@ -17,9 +19,10 @@ class TransactionsController < ApplicationController
     end
 
     def create
+        @category = Category.new(category_params)
         @transaction = Transaction.new(transaction_params)
         
-        if @transaction.save
+        if @transaction.save && @category.save
             redirect_to @transaction
         else
             render 'new'
@@ -45,7 +48,11 @@ class TransactionsController < ApplicationController
 
     private
         def transaction_params
-            params.require(:transaction).permit(:category, :business, :amount)
+            params.require(:transaction).permit(:business, :amount)
+        end
+
+        def category_params
+            params.permit(:category)
         end
 
 end
