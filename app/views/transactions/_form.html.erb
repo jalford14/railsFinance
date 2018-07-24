@@ -1,7 +1,7 @@
 <div id="form">
 
-  <%= form_with(model: @transaction, local: true) do |form| %>
-  
+  <%= form_for @category do |c| %>
+    <% if false %>
     <% if @transaction.errors.any? %>
       <div id="error_explanation">
         <h2>
@@ -15,26 +15,28 @@
         </ul>
       </div>
     <% end %>
+    <% end %>
   
-    <%= form.fields_for :category do |category| %>
+  
+    <p>
+        <%= c.label :category %><br>
+        <%= c.text_field :category %>
+    </p>
+
+    <%= c.fields_for :transactions do |t| %>
       <p>
-          <%= category.label :Create_new_category %><br>
-          <%= category.text_field :category %>
+          <%= t.label :business %><br>
+          <%= t.text_field :business %>
+      </p>
+
+      <p>
+          <%= t.label :amount %><br>
+          <%= t.text_field :amount %>
       </p>
     <% end %>
 
       <p>
-          <%= form.label :business %><br>
-          <%= form.text_field :business %>
-      </p>
-
-      <p>
-          <%= form.label :amount %><br>
-          <%= form.text_field :amount %>
-      </p>
-
-      <p>
-          <%= form.submit "Submit!"%>
+          <%= c.submit "Submit!"%>
       </p>
   
   <% end %>

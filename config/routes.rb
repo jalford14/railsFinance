@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :transactions
   resources :categories
+    
   
   root 'welcome#index'
 end

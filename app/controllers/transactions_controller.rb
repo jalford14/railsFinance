@@ -19,14 +19,16 @@ class TransactionsController < ApplicationController
     end
 
     def create
+        #render plain: params[:transaction]
         @category = Category.new(category_params)
         @transaction = Transaction.new(transaction_params)
-        
-        if @transaction.save && @category.save
-            redirect_to @transaction
-        else
-            render 'new'
-        end
+        #@category = params[:transaction][:category]
+        render plain: @category.to_json
+        # if @transaction.save && @category.save
+        #     redirect_to @transaction
+        # else
+        #     render 'new'
+        # end
     end
 
     def update
@@ -52,7 +54,7 @@ class TransactionsController < ApplicationController
         end
 
         def category_params
-            params.permit(:category)
+            params.require(:transaction).permit(:category, category_attributes: [:category])
         end
 
 end

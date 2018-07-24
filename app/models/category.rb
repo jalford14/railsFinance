@@ -4,6 +4,7 @@
 class Category < ApplicationRecord
     has_many :transactions
     validates :category, uniqueness: { case_sensitive: false }, presence: true
+    accepts_nested_attributes_for :transactions
 
     before_save :downcase_fields
 
