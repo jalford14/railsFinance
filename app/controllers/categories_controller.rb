@@ -9,12 +9,14 @@ class CategoriesController < ApplicationController
 
     def new
         @category = Category.new
+        @category.transactions.build
     end
 
     def create
         @category = Category.new(category_params)
+        @transaction = Transaction.new(transaction_params)
         
-        if @category.save
+        if @category.save && @transaction.save
             redirect_to @category
         else
             render 'new'
@@ -29,8 +31,12 @@ class CategoriesController < ApplicationController
     end
 
     private
+        def transaction_params
+            params.require(:category).permit(category_attributes: [:business, :amount])
+        end
+        
         def category_params
-            params.require(:category).permit(:category)
+            params.require(:category).permit(:category, transactions_attributes: [:business, :amount])
         end
 
 end

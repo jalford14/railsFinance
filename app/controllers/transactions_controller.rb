@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
     def new
         @transaction = Transaction.new
         @category = Category.new
+        @category.transactions.build
     end
 
     def edit
@@ -22,7 +23,7 @@ class TransactionsController < ApplicationController
         #render plain: params[:transaction]
         @category = Category.new(category_params)
         @transaction = Transaction.new(transaction_params)
-        #@category = params[:transaction][:category]
+        
         render plain: @category.to_json
         # if @transaction.save && @category.save
         #     redirect_to @transaction
