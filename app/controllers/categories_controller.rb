@@ -14,9 +14,8 @@ class CategoriesController < ApplicationController
 
     def create
         @category = Category.new(category_params)
-        @transaction = Transaction.new(transaction_params)
         
-        if @category.save && @transaction.save
+        if @category.save
             redirect_to @category
         else
             render 'new'
