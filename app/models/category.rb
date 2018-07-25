@@ -2,7 +2,7 @@
  # rake db:schema:load
 
 class Category < ApplicationRecord
-    has_many :transactions
+    has_many :transactions, dependent: :destroy
     validates :category, uniqueness: { case_sensitive: false }, presence: true
     accepts_nested_attributes_for :transactions
 
@@ -11,4 +11,5 @@ class Category < ApplicationRecord
     def downcase_fields
         self.category.downcase!
     end
+    
 end
