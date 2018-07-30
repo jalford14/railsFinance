@@ -3,7 +3,7 @@
 
 class Category < ApplicationRecord
     has_many :transactions, dependent: :destroy
-    validates :category, uniqueness: { case_sensitive: false }, presence: true
+    validates :category, presence: true
     accepts_nested_attributes_for :transactions
 
     before_save :downcase_fields
