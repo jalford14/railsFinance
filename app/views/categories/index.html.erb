@@ -10,10 +10,9 @@
     <div id="delete">DELETE</div>
 </div>
 
-<% @category.each do |category| %>
+<% Category.distinct(:category).pluck(:category).each do |category| %>
       <div id="category">
-        <div class="type"><%= category.category.titleize  %></div>
-        <div id="edit"><%= link_to image_tag("edit_icon.png"), edit_category_path(category) %></div>
+        <div class="type"><%= category.titleize  %></div>
         <div id="delete"><%= link_to image_tag("trash.png"), category_path(category),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></div>
