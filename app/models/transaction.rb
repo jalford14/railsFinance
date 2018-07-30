@@ -1,5 +1,5 @@
 class Transaction < ApplicationRecord
-    belongs_to :category, :optional => true
+    belongs_to :category
     
     validates :business, presence: false
     validates :amount, presence: false
